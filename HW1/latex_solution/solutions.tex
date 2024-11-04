@@ -326,4 +326,50 @@
 	\]
 	
 	
+	\section*{Question 3}
+	
+	\subsection*{Part (a): Matrix Formulation of \( O = ZW \) (20 Marks)}
+	
+	The regression model can be expressed in the form \( O = ZW \), where:
+	\[
+	O = \begin{bmatrix} o_1 \\ o_2 \\ \vdots \\ o_m \end{bmatrix}, \quad 
+	W = \begin{bmatrix} w_0 \\ w_1 \\ w_1 \\ w_2 \\ w_2 \\ \vdots \\ w_n \\ w_n \end{bmatrix}
+	\]
+	
+	The matrix \( Z \) is constructed from the input data as follows:
+	\[
+	Z = \begin{bmatrix}
+		1 & x_{1}^{(1)} & \left( x_{1}^{(1)} \right)^3 & x_{2}^{(1)} & \left( x_{2}^{(1)} \right)^3 & \cdots & x_{n}^{(1)} & \left( x_{n}^{(1)} \right)^3 \\
+		1 & x_{1}^{(2)} & \left( x_{1}^{(2)} \right)^3 & x_{2}^{(2)} & \left( x_{2}^{(2)} \right)^3 & \cdots & x_{n}^{(2)} & \left( x_{n}^{(2)} \right)^3 \\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \cdots & \vdots & \vdots \\
+		1 & x_{1}^{(m)} & \left( x_{1}^{(m)} \right)^3 & x_{2}^{(m)} & \left( x_{2}^{(m)} \right)^3 & \cdots & x_{n}^{(m)} & \left( x_{n}^{(m)} \right)^3 \\
+	\end{bmatrix}
+	\]
+	
+	Thus, each element in \( O \) is given by:
+	\[
+	o^{(j)} = w_0 + w_1 x_1^{(j)} + w_1 \left( x_1^{(j)} \right)^3 + w_2 x_2^{(j)} + w_2 \left( x_2^{(j)} \right)^3 + \dots + w_n x_n^{(j)} + w_n \left( x_n^{(j)} \right)^3
+	\]
+	where \( j = 1, 2, \dots, m \) represents each sample in the dataset.
+	
+	\subsection*{Part (b): Gradient Descent Update Rule for \( w_i \) (10 Marks)}
+	
+	To find \( W \) using gradient descent, we update each \( w_i \) according to the following rule:
+	\[
+	w_i \leftarrow w_i - \eta \frac{\partial}{\partial w_i} \left( \frac{1}{m} \sum_{j=1}^{m} \left( o^{(j)} - \hat{o}^{(j)} \right)^2 \right)
+	\]
+	where:
+	- \( \eta \) is the learning rate,
+	- \( o^{(j)} \) is the actual output for sample \( j \),
+	- \( \hat{o}^{(j)} = w_0 + w_1 x_1^{(j)} + w_1 \left( x_1^{(j)} \right)^3 + \dots + w_n x_n^{(j)} + w_n \left( x_n^{(j)} \right)^3 \) is the predicted output.
+	
+	For simplicity, the update rule for each \( w_i \) can be written as:
+	\[
+	w_i \leftarrow w_i - \eta \cdot \frac{1}{m} \sum_{j=1}^{m} \left( o^{(j)} - \hat{o}^{(j)} \right) \frac{\partial \hat{o}^{(j)}}{\partial w_i}
+	\]
+	
+	\textbf{Note}: The update relation for the bias term \( w_0 \) is not required in this problem.
+	
+	
+	
 \end{document}
