@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{listings}
 \usepackage[a4paper, margin=1in]{geometry}
 
 \begin{document}
@@ -217,7 +218,7 @@
 	\end{figure}
 	
 	
-	\section*{Part (b): Predict Wear for \( x_1 = 25 \) and \( x_2 = 1000 \) (5 Marks)}
+	\subsection*{Part (b): Predict Wear for \( x_1 = 25 \) and \( x_2 = 1000 \) (5 Marks)}
 	To predict the wear \( y \) when \( x_1 = 25 \) and \( x_2 = 1000 \), we substitute these values into our model:
 	
 	\[
@@ -234,7 +235,7 @@
 	
 	Thus, the predicted wear \( y \) when \( x_1 = 25 \) and \( x_2 = 1000 \) is approximately \( 177.2 \).
 	
-	 \section*{Part (c): Fit a Multivariate Linear Regression Model with Interaction Term \( x_1 x_2 \) (15 Marks)}
+	 \subsection*{Part (c): Fit a Multivariate Linear Regression Model with Interaction Term \( x_1 x_2 \) (15 Marks)}
 	In this part, we add an interaction term \( x_1 x_2 \) to the model. The new model is:
 	\[
 	y = b_0 + b_1 x_1 + b_2 x_2 + b_3 (x_1 x_2)
@@ -325,7 +326,6 @@
 	y = - 7.6 x_1 - 0.22 x_2 + 0.004 x_1 x_2 + 483.96
 	\]
 	
-	
 	\section*{Question 3}
 	
 	\subsection*{Part (a): Matrix Formulation of \( O = ZW \) (20 Marks)}
@@ -369,6 +369,431 @@
 	\]
 	
 	\textbf{Note}: The update relation for the bias term \( w_0 \) is not required in this problem.
+
+	\section*{Question 4 - Part 1}
+	
+	In this part, we implemented linear basis function regression with polynomial basis functions to predict fuel efficiency (miles per gallon) from seven car features in the Auto MPG dataset. The dataset was divided into training (first 100 points) and testing (remaining points) sets. We trained polynomial models of degrees 1 to 10 and evaluated the models using Root Mean Square Error (RMS Error) for both the training and testing sets. The plot of RMS Error versus polynomial degree is shown in Figure \ref{fig:rms_error_vs_degree}.
+	
+	\subsection*{Steps and Key Code Snippets}
+	
+	\begin{itemize}
+		\item \textbf{Data Loading and Preprocessing}: We loaded the dataset, dropped missing values, normalized the features and target to have zero mean and unit variance, and applied a permutation to randomize the data points. Here, only relevant features were selected, excluding the target variable \texttt{mpg}.
+		
+		\begin{verbatim}
+			X_norm = (X - X.mean(axis=0)) / X.std(axis=0)
+			y_norm = (y - y.mean(axis=0)) / y.std(axis=0)
+		\end{verbatim}
+		
+		\item \textbf{Polynomial Feature Generation}: For each polynomial degree, we generated polynomial terms up to the specified degree for each of the seven input features. This was achieved by manually expanding \texttt{X\_train} and \texttt{X\_test} for each power up to the desired degree.
+		
+		\begin{verbatim}
+			for deg in range(1, degree+1):
+			X_train_poly = np.hstack([X_train_poly, X_train**deg])
+			X_test_poly = np.hstack([X_test_poly, X_test**deg])
+		\end{verbatim}
+		
+		\item \textbf{Model Training}: We used linear regression without regularization by directly solving the least squares equation to obtain model coefficients. The following code snippet shows how the coefficients were computed:
+		
+		\begin{verbatim}
+			coef = np.linalg.lstsq(X_train_poly, y_train, rcond=None)[0]
+		\end{verbatim}
+		
+		\item \textbf{Error Calculation}: After fitting the model, we computed the RMS Error for both training and testing sets and stored these values for each polynomial degree.
+		
+		\begin{verbatim}
+			train_rmse = root_mean_squared_error(y_train, y_train_pred)
+			test_rmse = root_mean_squared_error(y_test, y_test_pred)
+		\end{verbatim}
+	\end{itemize}
+	
+	\subsection*{Results and Observations}
+	
+	The plot of RMS Error versus polynomial degree is shown in Figure \ref{fig:rms_error_vs_degree}.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{./images/q4_part1.png}
+		\caption{Training and Testing RMS Error vs. Polynomial Degree}
+		\label{fig:rms_error_vs_degree}
+	\end{figure}
+	
+	\paragraph{Comment:} In Figure \ref{fig:rms_error_vs_degree}, the training error consistently decreases as polynomial degree increases, indicating a better fit to the training data. However, the testing error initially remains stable but starts increasing significantly beyond degree 7, suggesting that higher-degree polynomials overfit the training data, capturing noise that does not generalize well to the testing data.
+	
+	\subsection*{Question 4 - Part 2}
+	
+	In this part, we performed polynomial regression using only a single feature from the dataset—the normalized horsepower feature. We applied polynomial models of degrees 1, 4, and 10 to illustrate the effects of model complexity on the training and testing data. The results, shown in Figure \ref{fig:single_feature_polynomial_fits}, highlight the trade-offs between underfitting, a balanced fit, and overfitting.
+	
+	\subsection*{Steps and Key Code Snippets}
+	
+	\begin{itemize}
+		\item \textbf{Feature Selection}: For this analysis, we used only the normalized horsepower feature (column index 2) as our input variable.
+		\begin{verbatim}
+			X_single_feature = X_norm[:, 2].reshape(-1, 1)  # Using "horsepower" feature
+			X_train_single, X_test_single = X_single_feature[:100], X_single_feature[100:]
+		\end{verbatim}
+		
+		\item \textbf{Polynomial Feature Transformation}: For each specified polynomial degree (1, 4, and 10), we generated polynomial features up to the selected degree.
+		\begin{verbatim}
+			for deg_single in range(1, degree+1):
+			X_train_poly = np.hstack([X_train_poly, X_train_single**deg_single])
+			X_test_poly = np.hstack([X_test_poly, X_test_single**deg_single])
+		\end{verbatim}
+		
+		\item \textbf{Model Training}: We used linear regression without regularization by solving the least squares problem to obtain model coefficients.
+		\begin{verbatim}
+			coef = np.linalg.lstsq(X_train_poly, y_train, rcond=None)[0]
+		\end{verbatim}
+		
+		\item \textbf{Visualization}: For each polynomial degree, we plotted the training and testing data points along with the polynomial fit. To produce a smooth curve, we evaluated the polynomial model on a dense set of points within the range of the training data.
+		\begin{verbatim}
+			X_range = np.linspace(X_train_single.min(), X_train_single.max(), 100).reshape(-1, 1)
+		\end{verbatim}
+	\end{itemize}
+	
+	\subsection*{Results and Observations}
+	
+	The polynomial regression fits for degrees 1, 4, and 10 are shown in Figure \ref{fig:single_feature_polynomial_fits}. 
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\textwidth]{images/q4_part2.png} % Replace "image.png" with the actual filename
+		\caption{Polynomial Regression with Single Feature (Horsepower)}
+		\label{fig:single_feature_polynomial_fits}
+	\end{figure}
+	
+	The figure illustrates the impact of increasing model complexity:
+	
+	\begin{itemize}
+		\item \textbf{Polynomial Degree 1}: 
+		\begin{itemize}
+			\item This plot shows a linear regression model, representing a degree 1 polynomial.
+			\item Blue dots correspond to the training data, and red dots represent the testing data.
+			\item The green line represents the linear regression fit, indicating a negative trend. As horsepower increases, the MPG decreases, capturing the general direction of the relationship.
+		\end{itemize}
+		
+		\item \textbf{Polynomial Degree 4}: 
+		\begin{itemize}
+			\item This plot shows a polynomial regression model of degree 4.
+			\item The green curve fits the data more closely than the linear model, capturing a more nuanced relationship between horsepower and MPG.
+			\item Degree 4 provides a balance between underfitting and overfitting, adapting to some of the nonlinear patterns in the data.
+		\end{itemize}
+		
+		\item \textbf{Polynomial Degree 10}: 
+		\begin{itemize}
+			\item This plot shows a polynomial regression model of degree 10.
+			\item The high-degree polynomial (green curve) exhibits significant fluctuations, indicating overfitting to the training data. This model captures noise rather than the underlying trend, which may result in poor generalization to new data.
+		\end{itemize}
+	\end{itemize}
+	
+	\paragraph{Conclusion:} This visualization highlights the trade-offs between model complexity and fit quality. A lower-degree polynomial (degree 1) underfits the data, while a very high-degree polynomial (degree 10) overfits. The degree 4 polynomial strikes a balance, capturing essential patterns in the data without excessive fluctuations.
+	
+	
+	
+	\section*{Question 4 - Part 3}
+	
+	In Part 3, we applied polynomial regression with L2 regularization (ridge regression) using the normalized horsepower feature. The goal was to observe the effect of different regularization strengths on training and testing errors. We used a polynomial of degree 8 and varied the regularization parameter, $\lambda$, across a range of values. The results, shown in Figure \ref{fig:regularization_error_plot}, illustrate how regularization influences model performance.
+	
+	\subsection*{Steps and Key Code Snippets}
+	
+	\begin{itemize}
+		\item \textbf{Feature Selection}: As in Part 2, we used only the normalized horsepower feature for this analysis.
+		\begin{verbatim}
+			X_single_feature = X_norm[:, 2].reshape(-1, 1)
+			X_train_single, X_test_single = X_single_feature[:100], X_single_feature[100:]
+		\end{verbatim}
+		
+		\item \textbf{Polynomial Feature Transformation with Regularization}: For each $\lambda$ value, we generated polynomial features up to degree 8 and applied L2 regularization using the normal equation:
+		$$(X^T X + \lambda I) \theta = X^T y$$
+		where $I$ is the identity matrix, with the bias term unregularized.
+		\begin{verbatim}
+			def fit_polynomial_l2(X, y, degree, lambda_value):
+			X_poly = np.ones((X.shape[0], 1))
+			for d in range(1, degree + 1):
+			X_poly = np.hstack([X_poly, X ** d])
+			
+			I = np.eye(X_poly.shape[1])
+			I[0, 0] = 0  # Do not regularize the bias term
+			theta = np.linalg.solve(X_poly.T @ X_poly + lambda_value * I, X_poly.T @ y)
+			
+			return theta, X_poly
+		\end{verbatim}
+		
+		\item \textbf{Error Calculation}: For each $\lambda$, we calculated the Root Mean Square Error (RMSE) for both the training and testing datasets.
+		\begin{verbatim}
+			train_rmse = root_mean_squared_error(y_train, y_train_pred)
+			test_rmse = root_mean_squared_error(y_test, y_test_pred)
+		\end{verbatim}
+		
+		\item \textbf{Visualization}: We plotted the training and testing errors against the regularization parameter $\lambda$ on a logarithmic scale.
+		\begin{verbatim}
+			plt.semilogx(lambdas, train_errors, label='Training Error', marker='o')
+			plt.semilogx(lambdas, test_errors, label='Testing Error', marker='o')
+		\end{verbatim}
+	\end{itemize}
+	
+	 \subsection*{Results and Observations}
+	
+	The plot of training and testing errors versus the regularization parameter $\lambda$ is shown in Figure \ref{fig:regularization_error_plot}. 
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/q4_part3.png} % Replace "image.png" with the actual filename
+		\caption{Training and Testing RMS Error vs. Regularization Parameter ($\lambda$)}
+		\label{fig:regularization_error_plot}
+	\end{figure}
+	
+	The figure illustrates the effect of increasing $\lambda$ on model performance:
+	
+	\begin{itemize}
+		\item \textbf{Low $\lambda$ values ($10^{-2}$ to $10^{0}$)}:
+		\begin{itemize}
+			\item At low regularization values, the training error remains around 0.60, and the testing error hovers around 0.55.
+			\item This range allows the model to fit the data without overfitting, maintaining a balance between bias and variance.
+		\end{itemize}
+		
+		\item \textbf{High $\lambda$ values ($10^{1}$ and above)}:
+		\begin{itemize}
+			\item As $\lambda$ increases beyond $10^{1}$, both training and testing errors start to rise.
+			\item At very high $\lambda$ values, such as $10^{3}$, the training error reaches around 0.85 and the testing error around 0.80, indicating a significant increase in both errors.
+			\item High regularization values induce underfitting, as the model is overly constrained and unable to capture the complexity in the data.
+		\end{itemize}
+	\end{itemize}
+	
+	\paragraph{Conclusion:} This graph demonstrates how regularization affects model performance. Low values of $\lambda$ provide minimal regularization, preventing overfitting while achieving low errors. However, excessively high $\lambda$ values lead to underfitting, causing increased errors in both the training and testing datasets. This trade-off highlights the importance of selecting an appropriate regularization strength to balance bias and variance.
+	
+	
+	
+	
+	\section*{Gaussian Basis Function Regression}
+	
+	In this question, we implement a Gaussian basis function regression model and evaluate its performance by varying the number of basis functions and applying L2 regularization. The Gaussian basis functions are defined as:
+	\[
+	\phi_j(x) = \exp\left(-\frac{\| x - \mu_j \|^2}{2s^2}\right)
+	\]
+	where each \(\mu_j\) is a randomly selected center from the training data, and \(s\) is set to 2.
+	
+	\subsection*{Experiment 1: Varying Number of Basis Functions}
+	We use the first 100 points as training data and the rest as testing data. A Gaussian basis function regression model is fitted with an increasing number of basis functions (5, 15, 25, ..., 95) without regularization. The training and testing RMS errors are computed and plotted.
+	
+	Key Python code:
+	\begin{lstlisting}[language=Python]
+		# Define Gaussian basis functions
+		def gaussian_basis(X, centers, s):
+		d2 = dist2(X, centers)
+		return np.exp(-d2 / (2 * s**2))
+		
+		# Loop over different numbers of basis functions
+		for basis_size in basis_sizes:
+		centers = X_train[np.random.choice(X_train.shape[0], basis_size)]
+		X_train_gauss = gaussian_basis(X_train, centers, s)
+		theta = np.linalg.pinv(X_train_gauss) @ y_train
+		# Compute RMS errors for training and testing sets
+	\end{lstlisting}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/q4_par4a.png}
+		\caption{Training and Testing RMS Error vs. Number of Basis Functions}
+		\label{fig:basis_functions_plot}
+	\end{figure}
+	
+	\paragraph{Observation:}
+	As shown in Figure \ref{fig:basis_functions_plot}, increasing the number of basis functions reduces training error but does not significantly affect testing error, indicating overfitting as the model becomes more complex.
+	
+	\subsection*{Experiment 2: L2-Regularized Regression}
+	Next, we apply L2 regularization with 90 basis functions, varying the regularization parameter \(\lambda\) over the values \(0, 0.01, 0.1, 1, 10, 100, 1000\). The regularization parameter controls model complexity by penalizing large coefficients.
+	
+	Key Python code:
+	\begin{lstlisting}[language=Python]
+		# Apply L2 regularization with different values of lambda
+		for lambda_value in lambdas:
+		I = np.eye(X_train_gauss.shape[1])
+		theta = np.linalg.solve(X_train_gauss.T @ X_train_gauss + lambda_value * I, 
+		X_train_gauss.T @ y_train)
+		# Compute RMS errors for training and testing sets
+	\end{lstlisting}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/q4_par4b.png}
+		\caption{Training and Testing RMS Error vs. Regularization Parameter (\(\lambda\))}
+		\label{fig:regularization_plot}
+	\end{figure}
+	
+	\paragraph{Observation:}
+	In Figure \ref{fig:regularization_plot}, the training RMS error increases as \(\lambda\) increases, while the testing error remains relatively stable. Small values of \(\lambda\) lead to lower training error but may cause overfitting, whereas larger values encourage underfitting due to excessive regularization.
+	
+	\subsection*{Conclusion}
+	From these experiments, we observe that:
+	\begin{itemize}
+		\item Increasing the number of basis functions improves the fit to training data but increases overfitting risk, as seen from high testing error.
+		\item L2 regularization helps control model complexity, with larger values of \(\lambda\) reducing overfitting but possibly leading to underfitting.
+	\end{itemize}
+	The choice of basis functions and regularization parameter should balance bias and variance to optimize model generalization.
+	
+	
+	\section*{Question 5: Linear Regression with Basis Function}
+	
+	In this question, we are given a one-dimensional dataset contained in the file \texttt{q4\_dataset.csv}. We will visualize the dataset and apply a linear regression model with a quadratic basis function to improve the model's fit.
+	
+	\subsection*{Part (a): Basis Function}
+	To fit a linear regression model on the dataset, we will utilize a quadratic basis function that maps the input features \( X \) to a higher-dimensional space. The transformation is defined as:
+	\[
+	\phi(X) = \begin{bmatrix}
+		1 \\
+		X \\
+		X^2
+	\end{bmatrix}
+	\]
+	This transformation allows the linear regression model to capture non-linear relationships between the input features and the labels.
+	
+	\subsection*{Part (b): Implementation}
+	
+	\subsubsection*{Data Visualization}
+	We start by visualizing the dataset, where \( X \) serves as input features and \( Y \) as labels. The following code snippet demonstrates how to visualize the data points in a two-dimensional space:
+	\begin{lstlisting}[language=Python]
+		import pandas as pd
+		import matplotlib.pyplot as plt
+		
+		# Load the dataset
+		data = pd.read_csv("q4_dataset.csv")
+		X = data['X'].values
+		Y = data['Y'].values
+		
+		# Visualize the data
+		plt.scatter(X, Y, color='blue', marker='o', label='Data points')
+		plt.xlabel("X")
+		plt.ylabel("Y")
+		plt.title("Visualization of the 1D Dataset")
+		plt.legend()
+		plt.show()
+	\end{lstlisting}
+	
+	\subsubsection*{Data Splitting and Model Training}
+	Next, we divide the dataset into training (80\%) and testing (20\%) subsets using random sampling. The model is then trained using the normal equation to find the optimal parameters:
+	\begin{lstlisting}[language=Python]
+		# Split the dataset into training (80%) and testing (20%) sets
+		np.random.seed(0)  # For reproducibility
+		indices = np.random.permutation(len(X))
+		train_size = int(0.8 * len(X))
+		train_indices, test_indices = indices[:train_size], indices[train_size:]
+		
+		X_train, Y_train = X[train_indices], Y[train_indices]
+		X_test, Y_test = X[test_indices], Y[test_indices]
+		
+		# Transform features using the quadratic basis function
+		X_train_basis = quadratic_basis(X_train)
+		
+		# Train the linear regression model using the normal equation
+		theta = np.linalg.inv(X_train_basis.T @ X_train_basis) @ X_train_basis.T @ Y_train
+	\end{lstlisting}
+	
+	\subsubsection*{Model Evaluation}
+	We compute the Mean Squared Error (MSE) on the test set to evaluate the model's performance:
+	\begin{lstlisting}[language=Python]
+		# Make predictions on the test set
+		Y_test_pred = X_test_basis @ theta
+		
+		# Compute Mean Squared Error (MSE)
+		mse = np.mean((Y_test - Y_test_pred)**2)
+		print(f"Mean Squared Error on the Test Set: {mse:.4f}")
+	\end{lstlisting}
+	
+	\subsubsection*{Model Visualization}
+	Finally, we visualize the training data, test data, and model predictions:
+	\begin{lstlisting}[language=Python]
+		plt.scatter(X_train, Y_train, color='blue', label='Training Data')
+		plt.scatter(X_test, Y_test, color='green', label='Test Data')
+		plt.scatter(X_test, Y_test_pred, color='red', label='Model Predictions')
+		plt.xlabel("X")
+		plt.ylabel("Y")
+		plt.title("Model Fit on Test Set (Quadratic Basis)")
+		plt.legend()
+		plt.show()
+	\end{lstlisting}
+	
+	\subsection*{Results}
+	The Mean Squared Error on the test set was computed to be approximately: 
+	\[
+	\text{MSE} \approx [insert_mse_value_here]
+	\]
+	This indicates how well the model performed on unseen data.
+	
+	
+	
+	\section*{Question 6: Predicting Abalone Age}
+	
+	In this question, we work with the Abalone dataset from the UCI Machine Learning Repository, where the objective is to predict the number of rings on abalones, which correlates with their age. The dataset contains several features, including measurements of length, diameter, height, and weights, with the exception of a gender feature that we will omit from our analysis.
+	
+	\subsection*{Dataset Preparation}
+	We start by loading the dataset and removing the gender feature, which is not relevant for our regression tasks. We then split the dataset into training and testing sets, maintaining a ratio of 80\% for training and 20\% for testing:
+	\begin{lstlisting}[language=Python]
+		# Load the dataset and drop the gender feature
+		data = pd.read_csv('abalone.csv', names=columns)
+		data = data.drop(columns=['Gender'])
+		
+		# Convert the dataframe into a NumPy array
+		X = data.iloc[:, :-1].values  # Features
+		y = data.iloc[:, -1].values    # Target variable
+		
+		# Split the dataset into training and testing sets
+		np.random.seed(42)  # For reproducibility
+		indices = np.random.permutation(len(X))
+		train_size = int(len(X) * 0.8)
+		train_indices, test_indices = indices[:train_size], indices[train_size:]
+	\end{lstlisting}
+	
+	\subsection*{Linear Regression Model}
+	We will implement linear regression to predict the number of rings using the following methods:
+	
+	\subsubsection*{a) Linear Regression}
+	For linear regression, we augment our feature matrix \( X \) by adding a bias term. The optimal parameters are calculated using the normal equation:
+	\begin{lstlisting}[language=Python]
+		# Add bias term to the feature matrix
+		X_b = np.c_[np.ones((X.shape[0], 1)), X]  # Add x0 = 1 to each instance
+		theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
+	\end{lstlisting}
+	
+	\subsubsection*{b) Polynomial Regression (Degree 2 and 3)}
+	To capture non-linear relationships, we implement polynomial regression. We generate polynomial features for degrees 2 and 3:
+	\begin{lstlisting}[language=Python]
+		def polynomial_features(X, degree):
+		"""Generate polynomial features."""
+		return np.column_stack([X ** d for d in range(1, degree + 1)])
+		
+		# For each degree, train and evaluate the polynomial regression model
+		for degree in [2, 3]:
+		X_poly = polynomial_features(X_train, degree)
+		X_poly_b = np.c_[np.ones((X_poly.shape[0], 1)), X_poly]  # Add bias term
+		theta_best = np.linalg.inv(X_poly_b.T.dot(X_poly_b)).dot(X_poly_b.T).dot(y_train)
+	\end{lstlisting}
+	
+	\subsubsection*{c) RBF Kernel Regression}
+	Lastly, we implement a Radial Basis Function (RBF) kernel regression. The RBF kernel allows us to measure similarity between samples and effectively handle non-linear relationships:
+	\begin{lstlisting}[language=Python]
+		def rbf_kernel(x1, x2, gamma=0.1):
+		"""Compute the RBF kernel between two sets of samples."""
+		sq_dists = np.sum(x1**2, axis=1).reshape(-1, 1) + np.sum(x2**2, axis=1) - 2 * np.dot(x1, x2.T)
+		return np.exp(-gamma * sq_dists)
+		
+		def rbf_regression(X_train, y_train, X_test, gamma=0.1):
+		K_train = rbf_kernel(X_train, X_train, gamma)
+		K_test = rbf_kernel(X_test, X_train, gamma)
+		alpha = np.linalg.inv(K_train).dot(y_train)  # (K_train)^-1 * y_train
+		y_pred_train = K_train.dot(alpha)
+		y_pred_test = K_test.dot(alpha)
+		return y_pred_train, y_pred_test
+	\end{lstlisting}
+	
+	\subsection*{Model Evaluation}
+	For each regression method, we calculate the Mean Squared Error (MSE) for both the training and testing datasets. This allows us to evaluate the model performance and determine how well it generalizes to unseen data. The implementation calculates the MSE as follows:
+	\begin{lstlisting}[language=Python]
+		# Function to calculate Mean Squared Error
+		def mean_squared_error(y_true, y_pred):
+		return np.mean((y_true - y_pred) ** 2)
+	\end{lstlisting}
+	
+	The results will show how each model performs, indicating which method best predicts the number of rings in abalones, thereby inferring their age.
 	
 	
 	
