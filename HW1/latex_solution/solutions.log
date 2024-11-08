@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.10)  6 NOV 2024 00:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.10)  8 NOV 2024 18:28
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**./solutions.tex
-(solutions.tex
+**e:/coding/ML_University/HW1/latex_solution/solutions.tex
+(e:/coding/ML_University/HW1/latex_solution/solutions.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
 (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -22,25 +23,21 @@ File: size10.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2024/05/23 v2.17q AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
 (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen142
-))
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen143
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count268
@@ -90,33 +87,32 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen151
 \Gin@req@width=\dimen152
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count280
 \lst@gtempboxa=\box54
 \lst@token=\toks23
@@ -129,27 +125,22 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 \lst@newlines=\count284
 \lst@lineno=\count285
 \lst@maxwidth=\dimen156
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
 \c@lstnumber=\count286
 \lst@skipnumbers=\count287
 \lst@framebox=\box55
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
 \Gm@cnth=\count288
@@ -164,11 +155,7 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen163
 \Gm@layoutvoffset=\dimen164
 \Gm@dimlist=\toks24
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box56
@@ -189,9 +176,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count292
 \scratchdimen=\dimen165
@@ -204,15 +189,10 @@ ii
 \MPnumerator=\count296
 \makeMPintoPDFobject=\count297
 \everyMPtoPDFconversion=\toks26
-)
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
+) (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count298
@@ -251,7 +231,14 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+ (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 [1
 
@@ -267,7 +254,7 @@ Package pdftex.def Info: ./images/task1_output.png  used on input line 100.
 <./images/task2a_output.png, id=22, 374.14781pt x 308.65312pt>
 File: ./images/task2a_output.png Graphic file (type png)
 <use ./images/task2a_output.png>
-Package pdftex.def Info: ./images/task2a_output.png  used on input line 215.
+Package pdftex.def Info: ./images/task2a_output.png  used on input line 214.
 (pdftex.def)             Requested size: 271.7835pt x 224.21754pt.
 
 
@@ -280,208 +267,150 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [4 <./images/task2a_output.png>]
 
 [5]
-<./images/q4_part1.png, id=35, 617.9085pt x 393.8715pt>
+
+[6]
+
+[7]
+<./images/q4_part1.png, id=43, 617.9085pt x 393.8715pt>
 File: ./images/q4_part1.png Graphic file (type png)
 <use ./images/q4_part1.png>
-Package pdftex.def Info: ./images/q4_part1.png  used on input line 415.
-(pdftex.def)             Requested size: 226.48395pt x 144.36589pt.
+Package pdftex.def Info: ./images/q4_part1.png  used on input line 438.
+(pdftex.def)             Requested size: 271.7835pt x 173.23788pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[6]
-Overfull \hbox (34.0281pt too wide) in paragraph at lines 450--450
- []   \OT1/cmtt/m/n/10 X_range = np.linspace(X_train_single.min(), X_train_sing
-le.max(), 100).reshape(-1, 1)[] 
+[8]
+Overfull \hbox (34.0281pt too wide) in paragraph at lines 473--473
+ []   \OT1/cmtt/m/n/10 X_range = np.linspace(X_train_single.min(), X_train_single.max(), 100).reshape(-1, 1)[] 
  []
 
-<images/q4_part2.png, id=41, 1076.1003pt x 357.7365pt>
+<images/q4_part2.png, id=49, 1076.1003pt x 357.7365pt>
 File: images/q4_part2.png Graphic file (type png)
 <use images/q4_part2.png>
-Package pdftex.def Info: images/q4_part2.png  used on input line 459.
+Package pdftex.def Info: images/q4_part2.png  used on input line 482.
 (pdftex.def)             Requested size: 452.9679pt x 150.58127pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[7 <./images/q4_part1.png>]
+[9 <./images/q4_part1.png>]
 
-[8 <./images/q4_part2.png>]
-<images/q4_part3.png, id=51, 617.9085pt x 397.485pt>
+[10 <./images/q4_part2.png>]
+<images/q4_part3.png, id=58, 617.9085pt x 397.485pt>
 File: images/q4_part3.png Graphic file (type png)
 <use images/q4_part3.png>
-Package pdftex.def Info: images/q4_part3.png  used on input line 540.
-(pdftex.def)             Requested size: 226.48395pt x 145.69035pt.
+Package pdftex.def Info: images/q4_part3.png  used on input line 559.
+(pdftex.def)             Requested size: 271.7835pt x 174.82721pt.
 
 
-[9 <./images/q4_part3.png>]
-(C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+[11 <./images/q4_part3.png>] (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
 )
-Overfull \hbox (33.03705pt too wide) in paragraph at lines 587--588
+Overfull \hbox (45.03717pt too wide) in paragraph at lines 604--605
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<images/q4_par4a.png, id=57, 611.4042pt x 393.8715pt>
+<images/q4_par4a.png, id=63, 611.4042pt x 393.8715pt>
 File: images/q4_par4a.png Graphic file (type png)
 <use images/q4_par4a.png>
-Package pdftex.def Info: images/q4_par4a.png  used on input line 595.
-(pdftex.def)             Requested size: 226.48395pt x 145.90445pt.
+Package pdftex.def Info: images/q4_par4a.png  used on input line 612.
+(pdftex.def)             Requested size: 271.7835pt x 175.08896pt.
 
 
-[10 <./images/q4_par4a.png>]
-Overfull \hbox (93.03766pt too wide) in paragraph at lines 611--612
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-<images/q4_par4b.png, id=63, 611.4042pt x 397.485pt>
+[12 <./images/q4_par4a.png>]
+<images/q4_par4b.png, id=69, 611.4042pt x 397.485pt>
 File: images/q4_par4b.png Graphic file (type png)
 <use images/q4_par4b.png>
-Package pdftex.def Info: images/q4_par4b.png  used on input line 618.
-(pdftex.def)             Requested size: 226.48395pt x 147.24303pt.
+Package pdftex.def Info: images/q4_par4b.png  used on input line 636.
+(pdftex.def)             Requested size: 271.7835pt x 176.69528pt.
 
 
-[11 <./images/q4_par4b.png>]
-Overfull \hbox (27.03699pt too wide) in paragraph at lines 664--665
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+[13 <./images/q4_par4b.png>]
+<images/q5_data.png, id=75, 502.2765pt x 393.8715pt>
+File: images/q5_data.png Graphic file (type png)
+<use images/q5_data.png>
+Package pdftex.def Info: images/q5_data.png  used on input line 676.
+(pdftex.def)             Requested size: 226.48395pt x 177.60114pt.
 
-
-Overfull \hbox (15.03687pt too wide) in paragraph at lines 675--676
+Overfull \hbox (15.03687pt too wide) in paragraph at lines 684--685
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (75.03748pt too wide) in paragraph at lines 679--681
+Overfull \hbox (75.03748pt too wide) in paragraph at lines 688--690
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.0368pt too wide) in paragraph at lines 687--688
+Overfull \hbox (9.0368pt too wide) in paragraph at lines 696--697
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (135.03809pt too wide) in paragraph at lines 688--689
+Overfull \hbox (135.03809pt too wide) in paragraph at lines 697--698
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 
-[12]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 6
-99.
+[14 <./images/q5_data.png>]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 708.
  (C:\Users\kingv\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
 File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 699.
-
-Overfull \hbox (39.03711pt too wide) in paragraph at lines 705--706
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (9.0368pt too wide) in paragraph at lines 706--707
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 708.
+<images/q5_predicted.png, id=80, 502.2765pt x 393.8715pt>
+File: images/q5_predicted.png Graphic file (type png)
+<use images/q5_predicted.png>
+Package pdftex.def Info: images/q5_predicted.png  used on input line 717.
+(pdftex.def)             Requested size: 226.48395pt x 177.60114pt.
 
 
-Overfull \hbox (75.03748pt too wide) in paragraph at lines 707--708
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (75.03748pt too wide) in paragraph at lines 743--744
-[][][][][][][][][][][][][][][][][][][] 
+[15 <./images/q5_predicted.png>]
+Overfull \hbox (61.52762pt too wide) in paragraph at lines 785--785
+[]    \OT1/cmtt/m/n/10 sq_dists = np.sum(x1**2, axis=1).reshape(-1, 1) + np.sum(x2**2, axis=1) - 2 * np.dot(x1, x2.T)[] 
  []
 
 
 
-[13]
-Overfull \hbox (69.03741pt too wide) in paragraph at lines 753--754
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][] 
- []
+[16]
+<images/q6_mse_compare.png, id=88, 602.0091pt x 324.4923pt>
+File: images/q6_mse_compare.png Graphic file (type png)
+<use images/q6_mse_compare.png>
+Package pdftex.def Info: images/q6_mse_compare.png  used on input line 792.
+(pdftex.def)             Requested size: 271.7835pt x 146.49551pt.
+<images/q6_ActualVsPredicted.png, id=89, 617.9085pt x 338.2236pt>
+File: images/q6_ActualVsPredicted.png Graphic file (type png)
+<use images/q6_ActualVsPredicted.png>
+Package pdftex.def Info: images/q6_ActualVsPredicted.png  used on input line 809.
+(pdftex.def)             Requested size: 271.7835pt x 148.76207pt.
 
 
-Overfull \hbox (3.03674pt too wide) in paragraph at lines 754--755
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+[17 <./images/q6_mse_compare.png> <./images/q6_ActualVsPredicted.png>]
 
-
-Overfull \hbox (15.03687pt too wide) in paragraph at lines 762--764
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (57.0373pt too wide) in paragraph at lines 764--765
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (75.03748pt too wide) in paragraph at lines 767--768
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (129.03802pt too wide) in paragraph at lines 768--769
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (207.03882pt too wide) in paragraph at lines 776--777
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (57.0373pt too wide) in paragraph at lines 782--783
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-
-[14] (solutions.aux)
+[18] (solutions.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4540 strings out of 475808
- 66816 string characters out of 5776951
- 687435 words of memory out of 5000000
- 27163 multiletter control sequences out of 15000+600000
- 564678 words of font info for 59 fonts, out of 8000000 for 9000
+ 4638 strings out of 475808
+ 69215 string characters out of 5776951
+ 658777 words of memory out of 5000000
+ 27244 multiletter control sequences out of 15000+600000
+ 566781 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,8n,65p,578b,1587s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\kingv\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti
-1000.pk> <C:\Users\kingv\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tcrm1000.pk><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/kingv/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/kingv/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/kingv/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/ki
-ngv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
-Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr17.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr8.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kingv/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/kingv/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/kingv/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (14 pages, 518240 bytes).
+ 57i,9n,65p,619b,1321s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\kingv\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/kingv/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on solutions.pdf (18 pages, 612902 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 170 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

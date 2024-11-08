@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{amsmath}
+\usepackage{amsmath, amsfonts}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage[a4paper, margin=1in]{geometry}
@@ -179,7 +179,7 @@
 	\end{bmatrix}
 	\]
 	
-	now if i convert this matrix to identity matrix the last column will represent the \( b_0 \), \( b_1 \), and \( b_2 \)
+	now if we convert this matrix to identity matrix the last column will represent the \( b_0 \), \( b_1 \), and \( b_2 \)
 	
 	
 	\[
@@ -209,7 +209,6 @@
 	y = - 3.8 x_1 - 0.1 x_2 + 372.2
 	\]
 	
-	\subsection*{Visualization} 
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.6\textwidth]{./images/task2a_output.png}
@@ -238,7 +237,7 @@
 	 \subsection*{Part (c): Fit a Multivariate Linear Regression Model with Interaction Term \( x_1 x_2 \) (15 Marks)}
 	In this part, we add an interaction term \( x_1 x_2 \) to the model. The new model is:
 	\[
-	y = b_0 + b_1 x_1 + b_2 x_2 + b_3 (x_1 x_2)
+	y = b_0 x_1 + b_1 x_2 + b_2 (x_1 x_2) + b_3
 	\]
 	
 	like what we did in part (a) we first calculate \(X\),\(B\) and \(Y\) matrix and solve \(X B = Y\) equation.
@@ -295,7 +294,7 @@
 	\end{bmatrix}
 	\]
 	
-	and just like befor we must convert matrix below to identity matrix
+	then just like befor we must convert matrix below to identity matrix
 	
 	\[
 	\begin{bmatrix}
@@ -306,7 +305,7 @@
 	\end{bmatrix}
 	\]
 	
-	and we end up with this matrix
+	finally we end up with this matrix
 	
 	\[
 	\begin{bmatrix}
@@ -326,52 +325,77 @@
 	y = - 7.6 x_1 - 0.22 x_2 + 0.004 x_1 x_2 + 483.96
 	\]
 	
+	\newpage
 	\section*{Question 3}
-	
-	\subsection*{Part (a): Matrix Formulation of \( O = ZW \) (20 Marks)}
-	
-	The regression model can be expressed in the form \( O = ZW \), where:
+	Given the regression problem with the prediction formula:
 	\[
-	O = \begin{bmatrix} o_1 \\ o_2 \\ \vdots \\ o_m \end{bmatrix}, \quad 
-	W = \begin{bmatrix} w_0 \\ w_1 \\ w_1 \\ w_2 \\ w_2 \\ \vdots \\ w_n \\ w_n \end{bmatrix}
+	o = w_0 + w_1 x_1 + w_1 x_1^3 + w_2 x_2 + w_2 x_2^3 + \dots + w_n x_n + w_n x_n^3,
+	\]
+	where \(O\) represents the predicted output, \(X\) is an \(n\)-dimensional vector, and \(W\) represents the weights \(w_1, w_2, \dots, w_n\), we will write the matrix form for this prediction using the data from \(m\) samples.
+	
+	\subsection*{Part (a): Matrix Form \(O = ZW\)}
+	
+	1. Define Matrices \(O\), \(Z\), and \(W\):
+	
+	Suppose we have \(m\) samples in our dataset. For each sample \(X^{(i)} = \begin{bmatrix} x_1^{(i)} & x_2^{(i)} & \dots & x_n^{(i)} \end{bmatrix}^T\), the output \(o^{(i)}\) is given by:
+	\[
+	o^{(i)} = w_0 + w_1 x_1^{(i)} + w_1 (x_1^{(i)})^3 + w_2 x_2^{(i)} + w_2 (x_2^{(i)})^3 + \dots + w_n x_n^{(i)} + w_n (x_n^{(i)})^3.
 	\]
 	
-	The matrix \( Z \) is constructed from the input data as follows:
+	2. Construct the Output Vector \(O\):
+	
+	Let \(O \in \mathbb{R}^m\) be the output vector for all \(m\) samples:
 	\[
-	Z = \begin{bmatrix}
-		1 & x_{1}^{(1)} & \left( x_{1}^{(1)} \right)^3 & x_{2}^{(1)} & \left( x_{2}^{(1)} \right)^3 & \cdots & x_{n}^{(1)} & \left( x_{n}^{(1)} \right)^3 \\
-		1 & x_{1}^{(2)} & \left( x_{1}^{(2)} \right)^3 & x_{2}^{(2)} & \left( x_{2}^{(2)} \right)^3 & \cdots & x_{n}^{(2)} & \left( x_{n}^{(2)} \right)^3 \\
-		\vdots & \vdots & \vdots & \vdots & \vdots & \cdots & \vdots & \vdots \\
-		1 & x_{1}^{(m)} & \left( x_{1}^{(m)} \right)^3 & x_{2}^{(m)} & \left( x_{2}^{(m)} \right)^3 & \cdots & x_{n}^{(m)} & \left( x_{n}^{(m)} \right)^3 \\
-	\end{bmatrix}
+	O = \begin{bmatrix} o^{(1)} \\ o^{(2)} \\ \vdots \\ o^{(m)} \end{bmatrix}.
 	\]
 	
-	Thus, each element in \( O \) is given by:
-	\[
-	o^{(j)} = w_0 + w_1 x_1^{(j)} + w_1 \left( x_1^{(j)} \right)^3 + w_2 x_2^{(j)} + w_2 \left( x_2^{(j)} \right)^3 + \dots + w_n x_n^{(j)} + w_n \left( x_n^{(j)} \right)^3
-	\]
-	where \( j = 1, 2, \dots, m \) represents each sample in the dataset.
+	3. Construct the Matrix \(Z\):
 	
-	\subsection*{Part (b): Gradient Descent Update Rule for \( w_i \) (10 Marks)}
-	
-	To find \( W \) using gradient descent, we update each \( w_i \) according to the following rule:
+	We can express each prediction as a linear combination of the weights, represented by the matrix \(Z \in \mathbb{R}^{m \times (2n+1)}\) that includes both the linear and cubic terms for each feature. The matrix \(Z\) is constructed as follows:
 	\[
-	w_i \leftarrow w_i - \eta \frac{\partial}{\partial w_i} \left( \frac{1}{m} \sum_{j=1}^{m} \left( o^{(j)} - \hat{o}^{(j)} \right)^2 \right)
-	\]
-	where:
-	- \( \eta \) is the learning rate,
-	- \( o^{(j)} \) is the actual output for sample \( j \),
-	- \( \hat{o}^{(j)} = w_0 + w_1 x_1^{(j)} + w_1 \left( x_1^{(j)} \right)^3 + \dots + w_n x_n^{(j)} + w_n \left( x_n^{(j)} \right)^3 \) is the predicted output.
-	
-	For simplicity, the update rule for each \( w_i \) can be written as:
-	\[
-	w_i \leftarrow w_i - \eta \cdot \frac{1}{m} \sum_{j=1}^{m} \left( o^{(j)} - \hat{o}^{(j)} \right) \frac{\partial \hat{o}^{(j)}}{\partial w_i}
+	Z = \begin{bmatrix} 
+		1 & x_1^{(1)} & (x_1^{(1)})^3 & x_2^{(1)} & (x_2^{(1)})^3 & \dots & x_n^{(1)} & (x_n^{(1)})^3 \\ 
+		1 & x_1^{(2)} & (x_1^{(2)})^3 & x_2^{(2)} & (x_2^{(2)})^3 & \dots & x_n^{(2)} & (x_n^{(2)})^3 \\ 
+		\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 
+		1 & x_1^{(m)} & (x_1^{(m)})^3 & x_2^{(m)} & (x_2^{(m)})^3 & \dots & x_n^{(m)} & (x_n^{(m)})^3 
+	\end{bmatrix}.
 	\]
 	
-	\textbf{Note}: The update relation for the bias term \( w_0 \) is not required in this problem.
-
-	\section*{Question 4 - Part 1}
+	4. Construct the Weight Vector \(W\):
 	
+	The weight vector \(W \in \mathbb{R}^{2n+1}\) includes the bias term \(w_0\) and the weights for both the linear and cubic terms of each feature:
+	\[
+	W = \begin{bmatrix} w_0 \\ w_1 \\ w_1 \\ w_2 \\ w_2 \\ \vdots \\ w_n \\ w_n \end{bmatrix}.
+	\]
+	
+	5. Matrix Form of the Prediction:
+	
+	The prediction for all samples can be written in matrix form as:
+	\[
+	O = Z W.
+	\]
+	
+	\subsection*{Part (b): Gradient Descent Relation for \(W\)}
+	
+	To obtain \(W\) using gradient descent, we need to update each weight \(w_i\) in \(W\) based on the error between the predicted output \(o^{(i)}\) and the actual target value for each sample. Let \(\hat{o}^{(i)}\) represent the actual target for the \(i\)-th sample, and let the loss function \(L\) be the mean squared error:
+	\[
+	L = \frac{1}{m} \sum_{i=1}^m (o^{(i)} - \hat{o}^{(i)})^2.
+	\]
+	
+	The gradient of \(L\) with respect to \(w_i\) for \(1 \le i \le n\) is:
+	\[
+	\frac{\partial L}{\partial w_i} = \frac{2}{m} \sum_{j=1}^m (o^{(j)} - \hat{o}^{(j)}) \cdot \frac{\partial o^{(j)}}{\partial w_i}.
+	\]
+	
+	Thus, the gradient descent update rule for each \(w_i\) is:
+	\[
+	w_i \leftarrow w_i - \eta \cdot \frac{\partial L}{\partial w_i},
+	\]
+	where \(\eta\) is the learning rate. This relation allows for iterative updates of each \(w_i\) to minimize the loss.
+	
+	\newpage
+	\section*{Question 4 - Polynomial Basis Function}
+	\subsection*{Polynomial Basis Function - part 1}
 	In this part, we implemented linear basis function regression with polynomial basis functions to predict fuel efficiency (miles per gallon) from seven car features in the Auto MPG dataset. The dataset was divided into training (first 100 points) and testing (remaining points) sets. We trained polynomial models of degrees 1 to 10 and evaluated the models using Root Mean Square Error (RMS Error) for both the training and testing sets. The plot of RMS Error versus polynomial degree is shown in Figure \ref{fig:rms_error_vs_degree}.
 	
 	\subsection*{Steps and Key Code Snippets}
@@ -387,9 +411,8 @@
 		\item \textbf{Polynomial Feature Generation}: For each polynomial degree, we generated polynomial terms up to the specified degree for each of the seven input features. This was achieved by manually expanding \texttt{X\_train} and \texttt{X\_test} for each power up to the desired degree.
 		
 		\begin{verbatim}
-			for deg in range(1, degree+1):
-			X_train_poly = np.hstack([X_train_poly, X_train**deg])
-			X_test_poly = np.hstack([X_test_poly, X_test**deg])
+			X_train_poly = np.hstack([X_train**deg for deg in range(degree + 1)])  
+			X_test_poly = np.hstack([X_test**deg for deg in range(degree + 1)])
 		\end{verbatim}
 		
 		\item \textbf{Model Training}: We used linear regression without regularization by directly solving the least squares equation to obtain model coefficients. The following code snippet shows how the coefficients were computed:
@@ -412,14 +435,14 @@
 	
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.5\textwidth]{./images/q4_part1.png}
+		\includegraphics[width=0.6\textwidth]{./images/q4_part1.png}
 		\caption{Training and Testing RMS Error vs. Polynomial Degree}
 		\label{fig:rms_error_vs_degree}
 	\end{figure}
 	
-	\paragraph{Comment:} In Figure \ref{fig:rms_error_vs_degree}, the training error consistently decreases as polynomial degree increases, indicating a better fit to the training data. However, the testing error initially remains stable but starts increasing significantly beyond degree 7, suggesting that higher-degree polynomials overfit the training data, capturing noise that does not generalize well to the testing data.
+	\paragraph{Comment:} In Figure \ref{fig:rms_error_vs_degree}, the training error consistently decreases as polynomial degree increases, indicating a better fit to the training data. However, the testing error initially remains stable but starts increasing significantly beyond degree 7, suggesting that higher-degree polynomials overfit the training data, capturing noise that does not generalize well to the testing data. we can see that polynomial with degree three is the best choice.
 	
-	\subsection*{Question 4 - Part 2}
+	\subsection*{Polynomial Basis Function - Part 2}
 	
 	In this part, we performed polynomial regression using only a single feature from the dataset—the normalized horsepower feature. We applied polynomial models of degrees 1, 4, and 10 to illustrate the effects of model complexity on the training and testing data. The results, shown in Figure \ref{fig:single_feature_polynomial_fits}, highlight the trade-offs between underfitting, a balanced fit, and overfitting.
 	
@@ -435,8 +458,8 @@
 		\item \textbf{Polynomial Feature Transformation}: For each specified polynomial degree (1, 4, and 10), we generated polynomial features up to the selected degree.
 		\begin{verbatim}
 			for deg_single in range(1, degree+1):
-			X_train_poly = np.hstack([X_train_poly, X_train_single**deg_single])
-			X_test_poly = np.hstack([X_test_poly, X_test_single**deg_single])
+				X_train_poly = np.hstack([X_train_poly, X_train_single**deg_single])
+				X_test_poly = np.hstack([X_test_poly, X_test_single**deg_single])
 		\end{verbatim}
 		
 		\item \textbf{Model Training}: We used linear regression without regularization by solving the least squares problem to obtain model coefficients.
@@ -489,7 +512,7 @@
 	
 	
 	
-	\section*{Question 4 - Part 3}
+	\subsection*{Polynomial Basis Function - Part 3}
 	
 	In Part 3, we applied polynomial regression with L2 regularization (ridge regression) using the normalized horsepower feature. The goal was to observe the effect of different regularization strengths on training and testing errors. We used a polynomial of degree 8 and varied the regularization parameter, $\lambda$, across a range of values. The results, shown in Figure \ref{fig:regularization_error_plot}, illustrate how regularization influences model performance.
 	
@@ -507,15 +530,11 @@
 		where $I$ is the identity matrix, with the bias term unregularized.
 		\begin{verbatim}
 			def fit_polynomial_l2(X, y, degree, lambda_value):
-			X_poly = np.ones((X.shape[0], 1))
-			for d in range(1, degree + 1):
-			X_poly = np.hstack([X_poly, X ** d])
-			
-			I = np.eye(X_poly.shape[1])
-			I[0, 0] = 0  # Do not regularize the bias term
-			theta = np.linalg.solve(X_poly.T @ X_poly + lambda_value * I, X_poly.T @ y)
-			
-			return theta, X_poly
+				X_poly = np.hstack([X**deg for deg in range(degree + 1)])
+				I = np.eye(X_poly.shape[1])
+				I[0, 0] = 0  # Do not regularize the bias term
+				theta = np.linalg.solve(X_poly.T @ X_poly + lambda_value * I, X_poly.T @ y)
+				return theta, X_poly
 		\end{verbatim}
 		
 		\item \textbf{Error Calculation}: For each $\lambda$, we calculated the Root Mean Square Error (RMSE) for both the training and testing datasets.
@@ -537,7 +556,7 @@
 	
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/q4_part3.png} % Replace "image.png" with the actual filename
+		\includegraphics[width=0.6\textwidth]{images/q4_part3.png} 
 		\caption{Training and Testing RMS Error vs. Regularization Parameter ($\lambda$)}
 		\label{fig:regularization_error_plot}
 	\end{figure}
@@ -562,9 +581,7 @@
 	\paragraph{Conclusion:} This graph demonstrates how regularization affects model performance. Low values of $\lambda$ provide minimal regularization, preventing overfitting while achieving low errors. However, excessively high $\lambda$ values lead to underfitting, causing increased errors in both the training and testing datasets. This trade-off highlights the importance of selecting an appropriate regularization strength to balance bias and variance.
 	
 	
-	
-	
-	\section*{Gaussian Basis Function Regression}
+	\section*{Question 4 - Gaussian Basis Function Regression}
 	
 	In this question, we implement a Gaussian basis function regression model and evaluate its performance by varying the number of basis functions and applying L2 regularization. The Gaussian basis functions are defined as:
 	\[
@@ -579,20 +596,20 @@
 	\begin{lstlisting}[language=Python]
 		# Define Gaussian basis functions
 		def gaussian_basis(X, centers, s):
-		d2 = dist2(X, centers)
-		return np.exp(-d2 / (2 * s**2))
+		  d2 = dist2(X, centers)
+		  return np.exp(-d2 / (2 * s**2))
 		
 		# Loop over different numbers of basis functions
 		for basis_size in basis_sizes:
-		centers = X_train[np.random.choice(X_train.shape[0], basis_size)]
-		X_train_gauss = gaussian_basis(X_train, centers, s)
-		theta = np.linalg.pinv(X_train_gauss) @ y_train
-		# Compute RMS errors for training and testing sets
+		  centers = X_train[np.random.choice(X_train.shape[0], basis_size)]
+		  X_train_gauss = gaussian_basis(X_train, centers, s)
+		  theta = np.linalg.pinv(X_train_gauss) @ y_train
+		  # Compute RMS errors for training and testing sets
 	\end{lstlisting}
 	
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/q4_par4a.png}
+		\includegraphics[width=0.6\textwidth]{images/q4_par4a.png}
 		\caption{Training and Testing RMS Error vs. Number of Basis Functions}
 		\label{fig:basis_functions_plot}
 	\end{figure}
@@ -607,15 +624,16 @@
 	\begin{lstlisting}[language=Python]
 		# Apply L2 regularization with different values of lambda
 		for lambda_value in lambdas:
-		I = np.eye(X_train_gauss.shape[1])
-		theta = np.linalg.solve(X_train_gauss.T @ X_train_gauss + lambda_value * I, 
-		X_train_gauss.T @ y_train)
-		# Compute RMS errors for training and testing sets
+		  I = np.eye(X_train_gauss.shape[1])
+		  theta = np.linalg.solve(X_train_gauss.T @ X_train_gauss 
+		                          + lambda_value * I, 
+		                          X_train_gauss.T @ y_train)
+		  # Compute RMS errors for training and testing sets
 	\end{lstlisting}
 	
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.5\textwidth]{images/q4_par4b.png}
+		\includegraphics[width=0.6\textwidth]{images/q4_par4b.png}
 		\caption{Training and Testing RMS Error vs. Regularization Parameter (\(\lambda\))}
 		\label{fig:regularization_plot}
 	\end{figure}
@@ -631,7 +649,7 @@
 	\end{itemize}
 	The choice of basis functions and regularization parameter should balance bias and variance to optimize model generalization.
 	
-	
+	\newpage
 	\section*{Question 5: Linear Regression with Basis Function}
 	
 	In this question, we are given a one-dimensional dataset contained in the file \texttt{q4\_dataset.csv}. We will visualize the dataset and apply a linear regression model with a quadratic basis function to improve the model's fit.
@@ -651,23 +669,14 @@
 	
 	\subsubsection*{Data Visualization}
 	We start by visualizing the dataset, where \( X \) serves as input features and \( Y \) as labels. The following code snippet demonstrates how to visualize the data points in a two-dimensional space:
-	\begin{lstlisting}[language=Python]
-		import pandas as pd
-		import matplotlib.pyplot as plt
-		
-		# Load the dataset
-		data = pd.read_csv("q4_dataset.csv")
-		X = data['X'].values
-		Y = data['Y'].values
-		
-		# Visualize the data
-		plt.scatter(X, Y, color='blue', marker='o', label='Data points')
-		plt.xlabel("X")
-		plt.ylabel("Y")
-		plt.title("Visualization of the 1D Dataset")
-		plt.legend()
-		plt.show()
-	\end{lstlisting}
+	
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/q5_data.png}
+		\caption{Training data for question five (\(\lambda\))}
+		\label{fig:q5_data}
+	\end{figure}
 	
 	\subsubsection*{Data Splitting and Model Training}
 	Next, we divide the dataset into training (80\%) and testing (20\%) subsets using random sampling. The model is then trained using the normal equation to find the optimal parameters:
@@ -701,100 +710,110 @@
 	
 	\subsubsection*{Model Visualization}
 	Finally, we visualize the training data, test data, and model predictions:
-	\begin{lstlisting}[language=Python]
-		plt.scatter(X_train, Y_train, color='blue', label='Training Data')
-		plt.scatter(X_test, Y_test, color='green', label='Test Data')
-		plt.scatter(X_test, Y_test_pred, color='red', label='Model Predictions')
-		plt.xlabel("X")
-		plt.ylabel("Y")
-		plt.title("Model Fit on Test Set (Quadratic Basis)")
-		plt.legend()
-		plt.show()
-	\end{lstlisting}
+	
+	
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/q5_predicted.png}
+	\caption{Training data for question five (\(\lambda\))}
+	\label{fig:q5_predicted}
+	\end{figure}
 	
 	\subsection*{Results}
 	The Mean Squared Error on the test set was computed to be approximately: 
 	\[
-	\text{MSE} \approx [insert_mse_value_here]
+	\text{MSE} \approx [112.78]
 	\]
 	This indicates how well the model performed on unseen data.
 	
 	
-	
+	\newpage
 	\section*{Question 6: Predicting Abalone Age}
 	
-	In this question, we work with the Abalone dataset from the UCI Machine Learning Repository, where the objective is to predict the number of rings on abalones, which correlates with their age. The dataset contains several features, including measurements of length, diameter, height, and weights, with the exception of a gender feature that we will omit from our analysis.
+	The Abalone dataset, obtained from the UCI Machine Learning Repository, is used to predict the age of abalones based on physical measurements. The primary task is to predict the number of rings, which indicates the age. This study explores the effectiveness of different kernel functions in a regression model to minimize the Mean Squared Error (MSE) between predicted and actual ring counts.
 	
-	\subsection*{Dataset Preparation}
-	We start by loading the dataset and removing the gender feature, which is not relevant for our regression tasks. We then split the dataset into training and testing sets, maintaining a ratio of 80\% for training and 20\% for testing:
-	\begin{lstlisting}[language=Python]
-		# Load the dataset and drop the gender feature
-		data = pd.read_csv('abalone.csv', names=columns)
-		data = data.drop(columns=['Gender'])
-		
-		# Convert the dataframe into a NumPy array
-		X = data.iloc[:, :-1].values  # Features
-		y = data.iloc[:, -1].values    # Target variable
-		
-		# Split the dataset into training and testing sets
-		np.random.seed(42)  # For reproducibility
-		indices = np.random.permutation(len(X))
-		train_size = int(len(X) * 0.8)
-		train_indices, test_indices = indices[:train_size], indices[train_size:]
-	\end{lstlisting}
+	\subsection*{Data Preparation}
+	The dataset includes several continuous features (length, diameter, height, etc.) and a categorical feature for gender, which was removed to simplify the analysis. The continuous features were standardized to improve model stability.
 	
-	\subsection*{Linear Regression Model}
-	We will implement linear regression to predict the number of rings using the following methods:
+	\subsection*{Methodology}
+	We evaluated four different kernel functions in predicting the abalone rings:
+	\begin{enumerate}
+		\item Linear Regression
+		\item Polynomial Kernel (Degree 2 and 3)
+		\item RBF Kernel (with different $\gamma$ values)
+	\end{enumerate}
 	
-	\subsubsection*{a) Linear Regression}
-	For linear regression, we augment our feature matrix \( X \) by adding a bias term. The optimal parameters are calculated using the normal equation:
-	\begin{lstlisting}[language=Python]
-		# Add bias term to the feature matrix
-		X_b = np.c_[np.ones((X.shape[0], 1)), X]  # Add x0 = 1 to each instance
-		theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
-	\end{lstlisting}
+	The models were trained on 80\% of the dataset, with the remaining 20\% reserved for testing. MSE was calculated for both the training and testing sets to assess model performance.
 	
-	\subsubsection*{b) Polynomial Regression (Degree 2 and 3)}
-	To capture non-linear relationships, we implement polynomial regression. We generate polynomial features for degrees 2 and 3:
-	\begin{lstlisting}[language=Python]
+	\subsection*{Linear Regression}
+	Implemented as follows:
+	\begin{verbatim}
+		def linear_regression(X, y):
+		  X_b = np.c_[np.ones((X.shape[0], 1)), X]
+		  theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
+		  return theta_best
+	\end{verbatim}
+	The resulting MSE for both training and testing sets were calculated.
+	
+	\subsection*{Polynomial Regression}
+	For polynomial regression, polynomial features were generated up to the specified degree:
+	\begin{verbatim}
 		def polynomial_features(X, degree):
-		"""Generate polynomial features."""
-		return np.column_stack([X ** d for d in range(1, degree + 1)])
+		  return np.column_stack([X ** d for d in range(1, degree + 1)])
 		
-		# For each degree, train and evaluate the polynomial regression model
-		for degree in [2, 3]:
-		X_poly = polynomial_features(X_train, degree)
-		X_poly_b = np.c_[np.ones((X_poly.shape[0], 1)), X_poly]  # Add bias term
-		theta_best = np.linalg.inv(X_poly_b.T.dot(X_poly_b)).dot(X_poly_b.T).dot(y_train)
-	\end{lstlisting}
+		def polynomial_regression(X, y, degree):
+		  X_poly = polynomial_features(X, degree)
+		  X_poly_b = np.c_[np.ones((X_poly.shape[0], 1)), X_poly]
+		  theta_best = np.linalg.inv(X_poly_b.T.dot(X_poly_b)).dot(X_poly_b.T).dot(y)
+		  return theta_best
+	\end{verbatim}
 	
-	\subsubsection*{c) RBF Kernel Regression}
-	Lastly, we implement a Radial Basis Function (RBF) kernel regression. The RBF kernel allows us to measure similarity between samples and effectively handle non-linear relationships:
-	\begin{lstlisting}[language=Python]
-		def rbf_kernel(x1, x2, gamma=0.1):
-		"""Compute the RBF kernel between two sets of samples."""
-		sq_dists = np.sum(x1**2, axis=1).reshape(-1, 1) + np.sum(x2**2, axis=1) - 2 * np.dot(x1, x2.T)
-		return np.exp(-gamma * sq_dists)
+	\subsection*{RBF Kernel Regression}
+	Implemented with gamma tuning:
+	\begin{verbatim}
+		def rbf_kernel(x1, x2, gamma):
+		  sq_dists = np.sum(x1**2, axis=1).reshape(-1, 1) + np.sum(x2**2, axis=1) - 2 * np.dot(x1, x2.T)
+		  return np.exp(-gamma * sq_dists)
 		
-		def rbf_regression(X_train, y_train, X_test, gamma=0.1):
-		K_train = rbf_kernel(X_train, X_train, gamma)
-		K_test = rbf_kernel(X_test, X_train, gamma)
-		alpha = np.linalg.inv(K_train).dot(y_train)  # (K_train)^-1 * y_train
-		y_pred_train = K_train.dot(alpha)
-		y_pred_test = K_test.dot(alpha)
-		return y_pred_train, y_pred_test
-	\end{lstlisting}
+		def rbf_regression(X_train, y_train, X_test, gamma):
+		  K_train = rbf_kernel(X_train, X_train, gamma)
+		  K_test = rbf_kernel(X_test, X_train, gamma)
+		  alpha = np.linalg.inv(K_train + 1e-8 * np.eye(K_train.shape[0])).dot(y_train)
+		  y_pred_train = K_train.dot(alpha)
+		  y_pred_test = K_test.dot(alpha)
+		  return y_pred_train, y_pred_test
+	\end{verbatim}
+	Different values of $\gamma$ were tested to find the best fit.
 	
-	\subsection*{Model Evaluation}
-	For each regression method, we calculate the Mean Squared Error (MSE) for both the training and testing datasets. This allows us to evaluate the model performance and determine how well it generalizes to unseen data. The implementation calculates the MSE as follows:
-	\begin{lstlisting}[language=Python]
-		# Function to calculate Mean Squared Error
-		def mean_squared_error(y_true, y_pred):
-		return np.mean((y_true - y_pred) ** 2)
-	\end{lstlisting}
+	\subsection*{Results and Analysis}
+	\subsection*{MSE Comparison of Different Kernel Functions}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/q6_mse_compare.png}
+		\caption{Comparison of Train and Test MSE for Different Kernel Functions}
+		\label{fig:mse_comparison}
+	\end{figure}
 	
-	The results will show how each model performs, indicating which method best predicts the number of rings in abalones, thereby inferring their age.
+	Figure \ref{fig:mse_comparison} presents the MSE for each kernel function. The x-axis shows the models: Linear, Polynomial (degree 2), Polynomial (degree 3), and RBF, while the y-axis represents the MSE values. The blue bars indicate Train MSE, and the orange bars indicate Test MSE.
 	
+	\paragraph*{Observations:}
+	\begin{itemize}
+		\item \textbf{Linear Kernel:} Train MSE $\approx 5.1$, Test MSE $\approx 4.1$
+		\item \textbf{Polynomial Kernel (degree=2 and degree=3):} Train MSE $\approx 4.7$, Test MSE $\approx 3.7$
+		\item \textbf{RBF Kernel:} Train MSE $\approx 4.4$, Test MSE $\approx 3.6$
+	\end{itemize}
 	
+	\subsection*{Actual vs. Predicted Rings Using RBF Kernel}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/q6_ActualVsPredicted.png}
+		\caption{Actual vs. Predicted Rings for RBF Kernel (gamma=0.01)}
+		\label{fig:actual_vs_predicted_rbf}
+	\end{figure}
 	
+	Figure \ref{fig:actual_vs_predicted_rbf} shows the scatter plot of actual versus predicted ring counts using the RBF Kernel Regression model with $\gamma=0.01$. The x-axis represents actual ring counts, while the y-axis shows predicted ring counts.
+	
+	\subsection*{Conclusion}
+	This analysis compared the performance of different kernel functions on the Abalone dataset using Mean Squared Error as the evaluation metric. The RBF kernel ($\gamma = 0.01$) provided a good balance between train and test MSE, suggesting these models generalize well. These findings suggest RBF kernels may be preferable for this dataset and task.
+
 \end{document}
